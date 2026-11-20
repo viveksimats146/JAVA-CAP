@@ -1,0 +1,44 @@
+- generic [ref=f3e8]:
+  - generic [ref=f3e14]:
+    - generic [ref=f3e15]:
+      - generic [ref=f3e16]:
+        - generic [ref=f3e17]: WELCOME BACK
+        - generic [ref=f3e18]: Good evening, Niranjan 👋
+      - generic "View profile" [ref=f3e19] [cursor=pointer]
+    - generic [ref=f3e23] [cursor=pointer]:
+      - generic [ref=f3e27]: Where do you need a driver?
+      - generic "Voice assistant" [ref=f3e28]
+    - generic [ref=f3e34]:
+      - generic [ref=f3e35] [cursor=pointer]:
+        - generic [ref=f3e36]: 🚗
+        - generic [ref=f3e37]: Hire Now
+        - generic [ref=f3e38]: Hourly/Daily
+      - generic [ref=f3e39] [cursor=pointer]:
+        - generic [ref=f3e40]: 📅
+        - generic [ref=f3e41]: Schedule
+        - generic [ref=f3e42]: Later / Repeat
+      - generic [ref=f3e43] [cursor=pointer]:
+        - generic [ref=f3e44]: ⚖️
+        - generic [ref=f3e45]: Compare
+        - generic [ref=f3e46]: Side-by-side
+      - generic [ref=f3e47] [cursor=pointer]:
+        - generic [ref=f3e48]: 🚨
+        - generic [ref=f3e49]: SOS
+        - generic [ref=f3e50]: Guardian
+    - generic [ref=f3e51]:
+      - generic [ref=f3e52]: 98%
+      - generic [ref=f3e58]:
+        - generic [ref=f3e59]:
+          - generic [ref=f3e60]: Rider Trust Score
+          - generic [ref=f3e61]: EXCELLENT
+        - generic [ref=f3e63]: Verified identity, high chauffeur rating, and priority dispatch on peak hours.
+    - generic [ref=f3e64]:
+      - generic [ref=f3e65]: Top Rated Drivers Near You
+      - generic [ref=f3e66] [cursor=pointer]: See All →
+  - generic [ref=f3e73]:
+    - generic "Home" [ref=f3e74] [cursor=pointer]
+    - generic "Drivers" [ref=f3e79] [cursor=pointer]
+    - generic "Voice Search AI" [ref=f3e84] [cursor=pointer]
+    - generic "Bookings" [ref=f3e88] [cursor=pointer]
+    - generic "Wallet" [ref=f3e92] [cursor=pointer]
+    - generic "Profile" [ref=f3e97] [cursor=pointer]

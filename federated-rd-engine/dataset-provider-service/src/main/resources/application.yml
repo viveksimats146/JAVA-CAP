@@ -1,0 +1,11 @@
+server:
+  port: ${DATASET_PROVIDER_PORT:8080}
+
+spring:
+  application:
+    name: dataset-provider-service
+
+logging:
+  level:
+    root: INFO
+    com.federated.dataset: DEBUG

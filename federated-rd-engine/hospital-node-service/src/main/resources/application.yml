@@ -1,0 +1,19 @@
+server:
+  port: ${SERVER_PORT:${REST_PORT:8080}}
+
+spring:
+  application:
+    name: hospital-node-service
+
+hospital:
+  id: ${HOSPITAL_ID:hospital-a}
+  rmi-port: ${RMI_PORT:1099}
+  peer-list: ${PEER_LIST:hospital-b:1099,hospital-c:1099}
+  jwt-secret: ${JWT_SECRET:federated_super_secret_jwt_key_32_bytes_long!!}
+  dataset-provider-url: ${DATASET_PROVIDER_URL:http://localhost:8081/datasets}
+  tdb2-path: ${TDB2_PATH:./data/tdb2_hospital_a}
+
+logging:
+  level:
+    root: INFO
+    com.federated.hospital: DEBUG

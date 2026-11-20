@@ -1,0 +1,109 @@
+version: '3.8'
+
+services:
+  dataset-provider-service:
+    build:
+      context: .
+      dockerfile: federated-rd-engine/dataset-provider-service/Dockerfile
+    container_name: dataset-provider-service
+    ports:
+      - "${DATASET_PROVIDER_PORT:-8081}:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SERVER_PORT=8081
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/datasets/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    networks:
+      - federation-net
+
+  hospital-a:
+    build:
+      context: .
+      dockerfile: federated-rd-engine/hospital-node-service/Dockerfile
+    container_name: hospital-a
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SERVER_PORT=8080
+      - HOSPITAL_ID=hospital-a
+      - RMI_PORT=1099
+      - PEER_LIST=hospital-b:1099,hospital-c:1099
+      - DATASET_PROVIDER_URL=http://dataset-provider-service:8081/datasets
+      - JWT_SECRET=${JWT_SECRET:-federated_super_secret_jwt_key_32_bytes_long!!}
+      - JENA_TDB2_LOCATION=/var/data/tdb2
+    volumes:
+      - hospital_a_data:/var/data/tdb2
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/v1/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    depends_on:
+      - dataset-provider-service
+    networks:
+      - federation-net
+
+  hospital-b:
+    build:
+      context: .
+      dockerfile: federated-rd-engine/hospital-node-service/Dockerfile
+    container_name: hospital-b
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SERVER_PORT=8080
+      - HOSPITAL_ID=hospital-b
+      - RMI_PORT=1099
+      - PEER_LIST=hospital-a:1099,hospital-c:1099
+      - DATASET_PROVIDER_URL=http://dataset-provider-service:8081/datasets
+      - JWT_SECRET=${JWT_SECRET:-federated_super_secret_jwt_key_32_bytes_long!!}
+      - JENA_TDB2_LOCATION=/var/data/tdb2
+    volumes:
+      - hospital_b_data:/var/data/tdb2
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/v1/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    depends_on:
+      - dataset-provider-service
+    networks:
+      - federation-net
+
+  hospital-c:
+    build:
+      context: .
+      dockerfile: federated-rd-engine/hospital-node-service/Dockerfile
+    container_name: hospital-c
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SERVER_PORT=8080
+      - HOSPITAL_ID=hospital-c
+      - RMI_PORT=1099
+      - PEER_LIST=hospital-a:1099,hospital-b:1099
+      - DATASET_PROVIDER_URL=http://dataset-provider-service:8081/datasets
+      - JWT_SECRET=${JWT_SECRET:-federated_super_secret_jwt_key_32_bytes_long!!}
+      - JENA_TDB2_LOCATION=/var/data/tdb2
+    volumes:
+      - hospital_c_data:/var/data/tdb2
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/v1/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    depends_on:
+      - dataset-provider-service
+    networks:
+      - federation-net
+
+volumes:
+  hospital_a_data:
+  hospital_b_data:
+  hospital_c_data:
+
+networks:
+  federation-net:
+    driver: bridge

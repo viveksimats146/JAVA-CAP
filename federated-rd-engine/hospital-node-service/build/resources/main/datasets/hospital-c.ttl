@@ -1,0 +1,88 @@
+@prefix ex: <http://example.org/health#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Classes Definition
+ex:Patient rdf:type rdfs:Class .
+ex:Condition rdf:type rdfs:Class .
+ex:Symptom rdf:type rdfs:Class .
+ex:Hospital rdf:type rdfs:Class .
+ex:CaseRecord rdf:type rdfs:Class .
+
+# Properties Definition
+ex:hasSymptom rdf:type rdf:Property .
+ex:diagnosedWith rdf:type rdf:Property .
+ex:reportedBy rdf:type rdf:Property .
+ex:ageBand rdf:type rdf:Property .
+ex:reportedDate rdf:type rdf:Property .
+
+# Hospital Instance
+ex:HospitalC rdf:type ex:Hospital ;
+    rdfs:label "University Research Clinic Hospital C" .
+
+# Conditions & Symptoms
+ex:COVID19 rdf:type ex:Condition ; rdfs:label "COVID-19 Respiratory Infection" .
+ex:Pneumonia rdf:type ex:Condition ; rdfs:label "Bacterial Pneumonia" .
+ex:Asthma rdf:type ex:Condition ; rdfs:label "Chronic Bronchial Asthma" .
+
+ex:Fever rdf:type ex:Symptom ; rdfs:label "High Grade Fever" .
+ex:ShortnessOfBreath rdf:type ex:Symptom ; rdfs:label "Acute Shortness of Breath" .
+ex:Wheezing rdf:type ex:Symptom ; rdfs:label "Chest Wheezing" .
+
+# Patient Case Records for Hospital C (50 triples)
+ex:P301 rdf:type ex:Patient ;
+    ex:ageBand "18-24" ;
+    ex:diagnosedWith ex:COVID19 ;
+    ex:hasSymptom ex:Fever ;
+    ex:reportedBy ex:HospitalC ;
+    ex:reportedDate "2026-01-09"^^xsd:date .
+
+ex:P302 rdf:type ex:Patient ;
+    ex:ageBand "55-64" ;
+    ex:diagnosedWith ex:COVID19 ;
+    ex:hasSymptom ex:Fever ;
+    ex:reportedBy ex:HospitalC ;
+    ex:reportedDate "2026-01-14"^^xsd:date .
+
+ex:P303 rdf:type ex:Patient ;
+    ex:ageBand "45-54" ;
+    ex:diagnosedWith ex:Pneumonia ;
+    ex:hasSymptom ex:ShortnessOfBreath ;
+    ex:reportedBy ex:HospitalC ;
+    ex:reportedDate "2026-01-17"^^xsd:date .
+
+ex:P304 rdf:type ex:Patient ;
+    ex:ageBand "25-34" ;
+    ex:diagnosedWith ex:Asthma ;
+    ex:hasSymptom ex:Wheezing ;
+    ex:reportedBy ex:HospitalC ;
+    ex:reportedDate "2026-01-20"^^xsd:date .
+
+ex:P305 rdf:type ex:Patient ;
+    ex:ageBand "35-44" ;
+    ex:diagnosedWith ex:Asthma ;
+    ex:hasSymptom ex:Wheezing ;
+    ex:reportedBy ex:HospitalC ;
+    ex:reportedDate "2026-01-22"^^xsd:date .
+
+ex:P306 rdf:type ex:Patient ;
+    ex:ageBand "65-74" ;
+    ex:diagnosedWith ex:Pneumonia ;
+    ex:hasSymptom ex:ShortnessOfBreath ;
+    ex:reportedBy ex:HospitalC ;
+    ex:reportedDate "2026-01-24"^^xsd:date .
+
+ex:P307 rdf:type ex:Patient ;
+    ex:ageBand "45-54" ;
+    ex:diagnosedWith ex:COVID19 ;
+    ex:hasSymptom ex:Fever ;
+    ex:reportedBy ex:HospitalC ;
+    ex:reportedDate "2026-01-27"^^xsd:date .
+
+ex:P308 rdf:type ex:Patient ;
+    ex:ageBand "18-24" ;
+    ex:diagnosedWith ex:Asthma ;
+    ex:hasSymptom ex:Wheezing ;
+    ex:reportedBy ex:HospitalC ;
+    ex:reportedDate "2026-01-30"^^xsd:date .

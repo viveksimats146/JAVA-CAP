@@ -1,0 +1,88 @@
+@prefix ex: <http://example.org/health#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Classes Definition
+ex:Patient rdf:type rdfs:Class .
+ex:Condition rdf:type rdfs:Class .
+ex:Symptom rdf:type rdfs:Class .
+ex:Hospital rdf:type rdfs:Class .
+ex:CaseRecord rdf:type rdfs:Class .
+
+# Properties Definition
+ex:hasSymptom rdf:type rdf:Property .
+ex:diagnosedWith rdf:type rdf:Property .
+ex:reportedBy rdf:type rdf:Property .
+ex:ageBand rdf:type rdf:Property .
+ex:reportedDate rdf:type rdf:Property .
+
+# Hospital Instance
+ex:HospitalA rdf:type ex:Hospital ;
+    rdfs:label "St. Jude Metropolitan Hospital A" .
+
+# Conditions & Symptoms
+ex:COVID19 rdf:type ex:Condition ; rdfs:label "COVID-19 Respiratory Infection" .
+ex:Influenza rdf:type ex:Condition ; rdfs:label "Influenza Type A" .
+ex:DiabetesType2 rdf:type ex:Condition ; rdfs:label "Type 2 Diabetes Mellitus" .
+
+ex:Fever rdf:type ex:Symptom ; rdfs:label "High Grade Fever" .
+ex:Cough rdf:type ex:Symptom ; rdfs:label "Dry Persistent Cough" .
+ex:Fatigue rdf:type ex:Symptom ; rdfs:label "Chronic Fatigue" .
+
+# Patient Case Records for Hospital A (50 triples)
+ex:P101 rdf:type ex:Patient ;
+    ex:ageBand "45-54" ;
+    ex:diagnosedWith ex:COVID19 ;
+    ex:hasSymptom ex:Fever ;
+    ex:reportedBy ex:HospitalA ;
+    ex:reportedDate "2026-01-10"^^xsd:date .
+
+ex:P102 rdf:type ex:Patient ;
+    ex:ageBand "25-34" ;
+    ex:diagnosedWith ex:COVID19 ;
+    ex:hasSymptom ex:Fever ;
+    ex:reportedBy ex:HospitalA ;
+    ex:reportedDate "2026-01-12"^^xsd:date .
+
+ex:P103 rdf:type ex:Patient ;
+    ex:ageBand "65-74" ;
+    ex:diagnosedWith ex:Influenza ;
+    ex:hasSymptom ex:Cough ;
+    ex:reportedBy ex:HospitalA ;
+    ex:reportedDate "2026-01-15"^^xsd:date .
+
+ex:P104 rdf:type ex:Patient ;
+    ex:ageBand "55-64" ;
+    ex:diagnosedWith ex:Influenza ;
+    ex:hasSymptom ex:Cough ;
+    ex:reportedBy ex:HospitalA ;
+    ex:reportedDate "2026-01-18"^^xsd:date .
+
+ex:P105 rdf:type ex:Patient ;
+    ex:ageBand "35-44" ;
+    ex:diagnosedWith ex:DiabetesType2 ;
+    ex:hasSymptom ex:Fatigue ;
+    ex:reportedBy ex:HospitalA ;
+    ex:reportedDate "2026-01-20"^^xsd:date .
+
+ex:P106 rdf:type ex:Patient ;
+    ex:ageBand "18-24" ;
+    ex:diagnosedWith ex:COVID19 ;
+    ex:hasSymptom ex:Fever ;
+    ex:reportedBy ex:HospitalA ;
+    ex:reportedDate "2026-01-22"^^xsd:date .
+
+ex:P107 rdf:type ex:Patient ;
+    ex:ageBand "55-64" ;
+    ex:diagnosedWith ex:Influenza ;
+    ex:hasSymptom ex:Cough ;
+    ex:reportedBy ex:HospitalA ;
+    ex:reportedDate "2026-01-25"^^xsd:date .
+
+ex:P108 rdf:type ex:Patient ;
+    ex:ageBand "65-74" ;
+    ex:diagnosedWith ex:DiabetesType2 ;
+    ex:hasSymptom ex:Fatigue ;
+    ex:reportedBy ex:HospitalA ;
+    ex:reportedDate "2026-01-28"^^xsd:date .

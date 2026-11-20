@@ -1,0 +1,88 @@
+@prefix ex: <http://example.org/health#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Classes Definition
+ex:Patient rdf:type rdfs:Class .
+ex:Condition rdf:type rdfs:Class .
+ex:Symptom rdf:type rdfs:Class .
+ex:Hospital rdf:type rdfs:Class .
+ex:CaseRecord rdf:type rdfs:Class .
+
+# Properties Definition
+ex:hasSymptom rdf:type rdf:Property .
+ex:diagnosedWith rdf:type rdf:Property .
+ex:reportedBy rdf:type rdf:Property .
+ex:ageBand rdf:type rdf:Property .
+ex:reportedDate rdf:type rdf:Property .
+
+# Hospital Instance
+ex:HospitalB rdf:type ex:Hospital ;
+    rdfs:label "General Mercy Regional Hospital B" .
+
+# Conditions & Symptoms
+ex:COVID19 rdf:type ex:Condition ; rdfs:label "COVID-19 Respiratory Infection" .
+ex:Influenza rdf:type ex:Condition ; rdfs:label "Influenza Type A" .
+ex:Pneumonia rdf:type ex:Condition ; rdfs:label "Bacterial Pneumonia" .
+
+ex:Fever rdf:type ex:Symptom ; rdfs:label "High Grade Fever" .
+ex:Cough rdf:type ex:Symptom ; rdfs:label "Dry Persistent Cough" .
+ex:ShortnessOfBreath rdf:type ex:Symptom ; rdfs:label "Acute Shortness of Breath" .
+
+# Patient Case Records for Hospital B (50 triples)
+ex:P201 rdf:type ex:Patient ;
+    ex:ageBand "35-44" ;
+    ex:diagnosedWith ex:COVID19 ;
+    ex:hasSymptom ex:Fever ;
+    ex:reportedBy ex:HospitalB ;
+    ex:reportedDate "2026-01-11"^^xsd:date .
+
+ex:P202 rdf:type ex:Patient ;
+    ex:ageBand "55-64" ;
+    ex:diagnosedWith ex:COVID19 ;
+    ex:hasSymptom ex:Fever ;
+    ex:reportedBy ex:HospitalB ;
+    ex:reportedDate "2026-01-13"^^xsd:date .
+
+ex:P203 rdf:type ex:Patient ;
+    ex:ageBand "45-54" ;
+    ex:diagnosedWith ex:Influenza ;
+    ex:hasSymptom ex:Cough ;
+    ex:reportedBy ex:HospitalB ;
+    ex:reportedDate "2026-01-16"^^xsd:date .
+
+ex:P204 rdf:type ex:Patient ;
+    ex:ageBand "65-74" ;
+    ex:diagnosedWith ex:Pneumonia ;
+    ex:hasSymptom ex:ShortnessOfBreath ;
+    ex:reportedBy ex:HospitalB ;
+    ex:reportedDate "2026-01-19"^^xsd:date .
+
+ex:P205 rdf:type ex:Patient ;
+    ex:ageBand "75+" ;
+    ex:diagnosedWith ex:Pneumonia ;
+    ex:hasSymptom ex:ShortnessOfBreath ;
+    ex:reportedBy ex:HospitalB ;
+    ex:reportedDate "2026-01-21"^^xsd:date .
+
+ex:P206 rdf:type ex:Patient ;
+    ex:ageBand "25-34" ;
+    ex:diagnosedWith ex:Influenza ;
+    ex:hasSymptom ex:Cough ;
+    ex:reportedBy ex:HospitalB ;
+    ex:reportedDate "2026-01-23"^^xsd:date .
+
+ex:P207 rdf:type ex:Patient ;
+    ex:ageBand "45-54" ;
+    ex:diagnosedWith ex:Pneumonia ;
+    ex:hasSymptom ex:ShortnessOfBreath ;
+    ex:reportedBy ex:HospitalB ;
+    ex:reportedDate "2026-01-26"^^xsd:date .
+
+ex:P208 rdf:type ex:Patient ;
+    ex:ageBand "65-74" ;
+    ex:diagnosedWith ex:COVID19 ;
+    ex:hasSymptom ex:Fever ;
+    ex:reportedBy ex:HospitalB ;
+    ex:reportedDate "2026-01-29"^^xsd:date .
